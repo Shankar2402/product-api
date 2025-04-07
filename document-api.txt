@@ -8,9 +8,9 @@ Method	            Endpoint	        Description
 
 1. GET	            /product-list	    Get all products
 2. POST	            /product-create	    Create a new product
-3. GET	            /product/{id}	    Get a product by ID
-4. PUT	            /product/{id}	    Update a product by ID
-5. DELETE	        /product/{id}	    Delete a product by ID
+3. GET	            /product-show/{id}	    Get a product by ID
+4. PUT	            /product-update/{id}	    Update a product by ID
+5. DELETE	          /product-delete/{id}	    Delete a product by ID
 
 Product Fields :- 
 
