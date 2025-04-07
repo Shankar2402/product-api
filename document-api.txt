@@ -1,0 +1,108 @@
+Product CRUD API Documentation
+
+Base URL:- http://127.0.0.1:8000/api/product/
+
+Routes Summary :-
+
+Method	            Endpoint	        Description
+
+1. GET	            /product-list	    Get all products
+2. POST	            /product-create	    Create a new product
+3. GET	            /product/{id}	    Get a product by ID
+4. PUT	            /product/{id}	    Update a product by ID
+5. DELETE	        /product/{id}	    Delete a product by ID
+
+Product Fields :- 
+
+Field	            Type	    Required	    Description
+1. name	            string	    Yes	        Unique product name
+2. description	    string	    No	        Product description
+3. price	        float	    Yes	        Product price (≥ 0)
+4. stock	        integer	    Yes	        Stock quantity (≥ 0)
+5. sku	            tring	    Yes	        Unique product SKU
+6. category	        string	    No	        Category name or type
+
+Create Product
+Endpoint: POST /api/product-create
+
+Request:
+{
+  "name": "T-shirt",
+  "description": "Cotton t-shirt",
+  "price": 19.99,
+  "stock": 50,
+  "sku": "TSHIRT123",
+  "category": "Clothing"
+}
+
+Response:
+
+{
+  "Status": "True",
+  "message": "Product created successfully",
+  "data": { ... }
+}
+
+List Products
+Endpoint: GET /api/product-list
+Response:
+
+{
+  "Status": "True",
+  "Message": "Product list fetched successfully",
+  "Data": [ ... ]
+}
+
+
+Get Product by ID
+Endpoint: GET /api/product/{id}
+Response (Success):
+
+{
+  "Status": "True",
+  "message": "Product found successfully",
+  "Data": { ... }
+}
+
+Response (Not Found):
+
+{
+  "Status": "False",
+  "message": "Product not found"
+}
+
+Update Product
+Endpoint: PUT /api/product/{id}
+Request:
+
+{
+  "price": 24.99,
+  "stock": 100
+}
+
+Response:
+{
+  "Status": "True",
+  "message": "Product updated successfully",
+  "Data": { ... }
+}
+
+Delete Product
+Endpoint: DELETE /api/product/{id}
+Response (Success):
+{
+  "Status": "True",
+  "message": "Product deleted successfully."
+}
+
+Response (Not Found):
+{
+  "Status": "False",
+  "message": "Product not found."
+}
+
+Additional Notes :-
+
+1. Caching: Products list is cached for 60 seconds to reduce DB load.
+2. After create, update, or delete, the product cache is cleared to reflect changes.
+3. Validation is handled for required fields and uniqueness of name and sku.
